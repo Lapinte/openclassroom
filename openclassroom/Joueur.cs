@@ -15,5 +15,20 @@ namespace openclassroom
                 return pointDeVie;
             }
         }
+
+        public Joueur()
+        {
+            pointDeVie = 150;
+        }
+
+        public void Attaquer(MonstreFacile monstre)
+        {
+
+        }
+
+        public void SubitDegats(int degat)
+        {
+
+        }
     }
 }
