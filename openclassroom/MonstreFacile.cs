@@ -4,11 +4,23 @@ using System.Text;
 
 namespace openclassroom
 {
-    class MonstreFacile
+    class MonstreFacile : De
     {
-        public void Attaquer()
+        public bool Vivant { get; set ; }
+        public MonstreFacile()
         {
+            Vivant = true;
+        }
 
+        public void Attaquer(Joueur joueur)
+        {
+            int tirageJoueur = joueur.LanceLeDe();
+            int tirageMonstre = LanceLeDe();
+            if (tirageMonstre > tirageJoueur)
+            {
+                joueur.SubitDegats(LanceLeDe());
+            }
+           
         }
     }
 }
