@@ -4,23 +4,37 @@ using System.Text;
 
 namespace openclassroom
 {
-    class MonstreFacile : De
+    public class MonstreFacile 
     {
-        public bool Vivant { get; set ; }
+        private const int degats = 10;
+        protected De de;
+        public bool EstVivant { get; private set ; }
+
         public MonstreFacile()
         {
-            Vivant = true;
+            de = new De();
+            EstVivant = true;
         }
 
-        public void Attaquer(Joueur joueur)
+        public virtual void Attaquer(Joueur joueur)
         {
             int tirageJoueur = joueur.LanceLeDe();
             int tirageMonstre = LanceLeDe();
             if (tirageMonstre > tirageJoueur)
             {
-                joueur.SubitDegats(LanceLeDe());
+                joueur.SubitDegats(degats);
             }
            
+        }
+
+        public void SubitDegats()
+        {
+            EstVivant = false;
+        }
+
+        public int LanceLeDe()
+        {
+            return de.LanceLeDe();
         }
     }
 }

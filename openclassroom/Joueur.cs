@@ -4,21 +4,21 @@ using System.Text;
 
 namespace openclassroom
 {
-    class Joueur : De
+    public class Joueur 
     {
-        private int pointDeVie;
 
-        public int PointDeVie
+        private De de;
+        public int PointDeVie { get; private set; }
+        public bool EstVivant
         {
-            get
-            {
-                return pointDeVie;
-            }
+            get { return PointDeVie > 0; }
         }
+        
 
-        public Joueur()
+        public Joueur(int points)
         {
-            pointDeVie = 150;
+            PointDeVie = points;
+            de = new De();
         }
 
         public void Attaquer(MonstreFacile monstre)
@@ -27,24 +27,25 @@ namespace openclassroom
             int tirageMonstre = monstre.LanceLeDe();
             if ( tirageJoueur >= tirageMonstre)
             {
-                monstre.Vivant = false;
-            }
-            else
-            {
-                monstre.Vivant = true;
+                monstre.SubitDegats();
             }
         }
 
-        public void SubitDegats(int degat)
+        public int LanceLeDe()
         {
-            if (degat <= 2)
+            return de.LanceLeDe();
+        }
+
+        public void SubitDegats(int degats)
+        {
+            if (!BouclierFonctionne())
             {
-                pointDeVie = PointDeVie;
+                PointDeVie -= degats;
             }
-            else
-            {
-                pointDeVie = pointDeVie - 10;
-            }
+        }
+        private bool BouclierFonctionne()
+        {
+            return de.LanceLeDe() <= 2;
         }
     }
 }
