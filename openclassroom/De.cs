@@ -4,18 +4,18 @@ using System.Text;
 
 namespace openclassroom
 {
-    public class De
+    public static class De
     {
-        private Random random;
+        private static Random random = new Random();
 
-        public De()
-        {
-            random = new Random();
-        }
-
-        public int LanceLeDe()
+        public static int LanceLeDe()
         {
             return random.Next(1, 7);
+        }
+
+        public static int LanceLeDe(int tailleDuDe)
+        {
+            return random.Next(1, tailleDuDe+1);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace openclassroom
 
         private int SortMagique()
         {
-            int valeur = de.LanceLeDe();
+            int valeur = De.LanceLeDe();
             if ( valeur == 6)
             {
                 return 0;
